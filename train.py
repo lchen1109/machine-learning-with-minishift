@@ -6,8 +6,8 @@ from keras.layers import Dense, Dropout, Flatten
 from keras.layers import Conv2D, MaxPooling2D
 from keras import backend as K
 
-
 def start():
+
     batch_size = 128
     num_classes = 10
     epochs = 12
@@ -17,6 +17,7 @@ def start():
 
     # the data, split between train and test sets
     (x_train, y_train), (x_test, y_test) = mnist.load_data()
+
 
     if K.image_data_format() == 'channels_first':
         x_train = x_train.reshape(x_train.shape[0], 1, img_rows, img_cols)
@@ -54,6 +55,7 @@ def start():
     model.compile(loss=keras.losses.categorical_crossentropy,
                 optimizer=keras.optimizers.Adadelta(),
                 metrics=['accuracy'])
+
     model.fit(x_train, y_train,
             batch_size=batch_size,
             epochs=epochs,
